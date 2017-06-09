@@ -17,8 +17,16 @@ const router = new Router({
     mode: 'history',
     routes: [{
         path: '/',
-        name: 'Menu',
+        name: '不锈钢计算器',
         component: Menu
+    }, {
+        path: '/calculator',
+        name: '计算器',
+        components: {
+            path: '/calculator/gc',
+            name: '钢材计算器',
+            component: gc
+        }
     }, { //** 404页面 */
         path: '*',
         component: Error,

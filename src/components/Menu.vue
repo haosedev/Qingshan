@@ -1,7 +1,7 @@
 <template>
     <div>
         <group title="不锈钢计算器">
-            <cell title="不锈钢材" is-link></cell>
+            <cell title="不锈钢材" link="/calculator/gc"></cell>
             <cell title="不锈钢管" is-link></cell>
             <cell title="不锈钢方管" is-link></cell>
             <cell title="不锈钢矩形管" is-link></cell>
