@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/vuex/store'
 
-import Hello from '@/components/Hello'
+import Menu from '@/components/Menu'
 import Error from '@/components/Error'
 
 Vue.use(Router)
@@ -17,8 +17,8 @@ const router = new Router({
     mode: 'history',
     routes: [{
         path: '/',
-        name: 'Hello',
-        component: Hello
+        name: 'Menu',
+        component: Menu
     }, { //** 404页面 */
         path: '*',
         component: Error,

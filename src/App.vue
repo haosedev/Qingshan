@@ -3,9 +3,6 @@
     <div v-transfer-dom>
       <loading v-model="isLoading"></loading>
     </div>
-    <div v-transfer-dom>
-      <actionsheet :menus="menus" v-model="showMenu" @on-click-menu="changeLocale"></actionsheet>
-    </div>
 
     <view-box ref="viewBox" body-padding-top="46px" body-padding-bottom="55px">
       
@@ -14,27 +11,12 @@
       :left-options="leftOptions"
       :right-options="rightOptions"
       :title="title"
-      :transition="headerTransition"
-      @on-click-more="onClickMore"></x-header>
+      :transition="headerTransition"></x-header>
 
       <transition :name="'vux-pop-' + (direction === 'forward' ? 'in' : 'out')">
         <router-view class="router-view"></router-view>
       </transition>
 
-      <tabbar class="vux-demo-tabbar" icon-class="vux-center" v-show="!isTabbarDemo" slot="bottom">
-        <tabbar-item :link="{path:'/'}" :selected="route.path === '/'">
-          <span class="demo-icon-22 vux-demo-tabbar-icon-home" slot="icon" style="position:relative;top: -2px;">&#xe637;</span>
-          <span slot="label">Home</span>
-        </tabbar-item>
-        <tabbar-item :link="{path:'/demo'}" :selected="isDemo" badge="9">
-          <span class="demo-icon-22" slot="icon">&#xe633;</span>
-          <span slot="label"><span v-if="componentName" class="vux-demo-tabbar-component">{{componentName}}</span><span v-else>Demos</span></span>
-        </tabbar-item>
-        <tabbar-item :link="{path:'/project/donate'}" :selected="route.path === '/project/donate'" show-dot>
-          <span class="demo-icon-22" slot="icon">&#xe630;</span>
-          <span slot="label">Donate</span>
-        </tabbar-item>
-      </tabbar>
   </view-box>
   </div>
 </template>
@@ -42,7 +24,6 @@
 <script>
     import store from '@/vuex/store'
     import {
-        Actionsheet,
         ButtonTab,
         ButtonTabItem,
         ViewBox,
@@ -69,12 +50,8 @@
             Tabbar,
             TabbarItem,
             Loading,
-            Actionsheet
         },
         methods: {
-            onClickMore() {
-                this.showMenu = true
-            },
             changeLocale(locale) {
                 this.$i18n.set(locale)
                 this.$locale.set(locale)
@@ -155,19 +132,12 @@
             },
             title() {
                 if (this.route.path === '/') return 'Home'
-                if (this.route.path === '/project/donate') return 'Donate'
-                if (this.route.path === '/demo') return 'Demo list'
                 return this.componentName ? `Demo/${this.componentName}` : 'Demo/~~'
             }
         },
         data() {
             return {
                 showMenu: false,
-                menus: {
-                    'language.noop': '<span class="menu-title">Language</span>',
-                    'zh-CN': '中文',
-                    'en': 'English'
-                }
             }
         }
     }
