@@ -112,7 +112,7 @@
             },
             rightOptions() {
                 return {
-                    showMore: true
+                    showMore: false
                 }
             },
             headerTransition() {
@@ -124,16 +124,15 @@
                     if (/component/.test(this.route.path) && parts[2]) return parts[2]
                 }
             },
-            isDemo() {
-                return /component|demo/.test(this.route.path)
-            },
-            isTabbarDemo() {
-                return /tabbar/.test(this.route.path)
+            routerName() {
+                if (this.route.path) {
+                    return this.route.name;
+                }
             },
             title() {
-                if (this.route.path === '/') return 'Home'
-                return this.componentName ? `Demo/${this.componentName}` : 'Demo/~~'
-            }
+                if (this.route.path === '/') return '钢材计算器'
+                return this.routerName ? `计算器-${this.routerName}` : '计算器'
+            },
         },
         data() {
             return {

@@ -4,6 +4,8 @@ import store from '@/vuex/store'
 
 import Menu from '@/components/Menu'
 import Error from '@/components/Error'
+//
+import cal_gc from '@/components/calculator/gc'
 
 Vue.use(Router)
 
@@ -20,13 +22,9 @@ const router = new Router({
         name: '不锈钢计算器',
         component: Menu
     }, {
-        path: '/calculator',
-        name: '计算器',
-        components: {
-            path: '/calculator/gc',
-            name: '钢材计算器',
-            component: gc
-        }
+        path: '/calculator/gc',
+        name: '钢材计算器',
+        component: cal_gc
     }, { //** 404页面 */
         path: '*',
         component: Error,
