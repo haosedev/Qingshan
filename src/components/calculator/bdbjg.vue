@@ -99,24 +99,36 @@
         },
         computed: {
             res1() {
-                //var totalWeight = density*(Number(wWidth*(Number(wLongWidth)+Number(wShortWidth)-wWidth))+Number(0.215*(wInRadius*wInRadius-2*wTopRadius*wTopRadius)))*wLength;
                 var key_num = this.itemList.indexOf(this.item[0]);
                 var density = this.numList[key_num];
+                var d = parseFloat(this.val_d);
+                var b = parseFloat(this.val_b);
+                var B = parseFloat(this.val_bb);
+                var R = parseFloat(this.val_rr);
+                var r = parseFloat(this.val_r);
+                var L = parseFloat(this.val_ll);
                 if (density > 0) {
                     //W=0.00000793*[d*(B+b-d)+0.215(R*R-2*r*r)]*L
-                    var result = density * [parseInt(this.val_d) * (parseInt(this.val_bb) + parseInt(this.val_b) - parseInt(this.val_d)) + 0.215 * (parseInt(this.val_rr) * parseInt(this.val_rr) - 2 * parseInt(this.val_r) * parseInt(this.val_r))] * parseInt(this.val_ll);
+                    var result = density * [d * (B + b - d) + 0.215 * (R * R - 2 * r * r)] * L;
                     return result;
                 } else {
                     return 0;
                 }
             },
             res2() {
-                //var totalWidth = lWeight/(density*(Number(lWidth*(Number(lLongWidth)+Number(lShortWidth)-lWidth))+Number(0.215*(lInRadius*lInRadius-2*lTopRadius*lTopRadius))));
                 var key_num = this.itemList.indexOf(this.item[0]);
                 var density = this.numList[key_num];
+                var d = parseFloat(this.val_d);
+                var b = parseFloat(this.val_b);
+                var B = parseFloat(this.val_bb);
+                var R = parseFloat(this.val_rr);
+                var r = parseFloat(this.val_r);
+                var W = parseFloat(this.val_ww);
+                console.log(W);
                 if (density > 0) {
                     //L=W/0.000000793*[d*（B+b-d)+0.215（R*R-2*r*r)]
-                    var result = parseInt(this.val_ww) / (density * (parseInt(this.val_d) * (parseInt(this.val_bb) + parseInt(this.val_b) - parseInt(this.val_d)) + 0.215 * (parseInt(this.val_rr) * parseInt(this.val_rr) - 2 * parseInt(this.val_r) * parseInt(this.val_r))));
+                    var result = W / (density * (d * (B + b - d) + 0.215 * (R * R - 2 * r * r)));
+                    console.log(W + '/' + '(' + density + '*' + ' (' + d + '* (' + B + '+' + b + '-' + d + ') + 0.215 * (' + R + '*' + R + '- 2 *' + r + '*' + r + ')))');
                     return result;
                 } else {
                     return 0;

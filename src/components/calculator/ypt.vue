@@ -96,7 +96,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //W=0.00000623*d*d*L
-                    var result = density * parseInt(this.val_l) * parseInt(this.val_l) * parseInt(this.val_ll);
+                    var result = density * parseFloat(this.val_l) * parseFloat(this.val_l) * parseFloat(this.val_ll);
                     return result;
                 } else {
                     return 0;
@@ -108,7 +108,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //L=W/0.00000623*d*d
-                    var result = parseInt(this.val_ww) / (density * parseInt(this.val_l) * parseInt(this.val_l));
+                    var result = parseFloat(this.val_ww) / (density * parseFloat(this.val_l) * parseFloat(this.val_l));
                     return result;
                 } else {
                     return 0;

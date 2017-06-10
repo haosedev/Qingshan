@@ -98,7 +98,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //W=0.00002491*S（D-S）*L
-                    var result = density * parseInt(this.val_s) * (parseInt(this.val_d) - parseInt(this.val_s)) * parseInt(this.val_ll);
+                    var result = density * parseFloat(this.val_s) * (parseFloat(this.val_d) - parseFloat(this.val_s)) * parseFloat(this.val_ll);
                     return result;
                 } else {
                     return 0;
@@ -109,7 +109,7 @@
                 var key_num = this.itemList.indexOf(this.item[0]);
                 var density = this.numList[key_num];
                 if (density > 0) {
-                    var result = parseInt(this.val_ww) / (density * parseInt(this.val_s) * (parseInt(this.val_d) - parseInt(this.val_s)));
+                    var result = parseFloat(this.val_ww) / (density * parseFloat(this.val_s) * (parseFloat(this.val_d) - parseFloat(this.val_s)));
                     return result;
                 } else {
                     return 0;

@@ -106,7 +106,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //W=0.00000793*[h*d+2*t(b-d)+0.349(R*R-r*r)]*L
-                    var result = density * (parseInt(this.val_h) * parseInt(this.val_d) + 2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d)) + 0.349 * (parseInt(this.val_rr) * parseInt(this.val_rr) - parseInt(this.val_r) * parseInt(this.val_r))) * parseInt(this.val_ll);
+                    var result = density * (parseFloat(this.val_h) * parseFloat(this.val_d) + 2 * parseFloat(this.val_t) * (parseFloat(this.val_b) - parseFloat(this.val_d)) + 0.349 * (parseFloat(this.val_rr) * parseFloat(this.val_rr) - parseFloat(this.val_r) * parseFloat(this.val_r))) * parseFloat(this.val_ll);
                     return result;
                 } else {
                     return 0;
@@ -118,7 +118,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //L=W/0.00000793*[h*d+2*t(b-d)+0.349(R*R-r*r)]
-                    var result = parseInt(this.val_ww) / (density * (parseInt(this.val_h) * parseInt(this.val_d) + 2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d)) + 0.349 * (parseInt(this.val_rr) * parseInt(this.val_rr) - parseInt(this.val_r) * parseInt(this.val_r))));
+                    var result = parseFloat(this.val_ww) / (density * (parseFloat(this.val_h) * parseFloat(this.val_d) + 2 * parseFloat(this.val_t) * (parseFloat(this.val_b) - parseFloat(this.val_d)) + 0.349 * (parseFloat(this.val_rr) * parseFloat(this.val_rr) - parseFloat(this.val_r) * parseFloat(this.val_r))));
                     return result;
                 } else {
                     return 0;
