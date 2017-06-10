@@ -38,7 +38,6 @@ history.setItem('/', 0)
 
 
 const router = new Router({
-    mode: 'history',
     routes: [{
         path: '/',
         name: '不锈钢计算器',

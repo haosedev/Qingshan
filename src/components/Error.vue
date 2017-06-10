@@ -1,6 +1,7 @@
 <template>
     <div>
         <p>{{ msg }}</p>
+        <p>{{  }}</p>
         <p>此页面不存在！</p>
     </div>
 </template>
