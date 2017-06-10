@@ -1,11 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/vuex/store'
-
+//页面目录
 import Menu from '@/components/Menu'
 import Error from '@/components/Error'
-//
-import cal_gc from '@/components/calculator/gc'
+//不锈钢板材
+import cal_bc from '@/components/calculator/bc'
+//不锈钢管
+import cal_gg from '@/components/calculator/gg'
+//不锈钢方管
+import cal_fg from '@/components/calculator/fg'
+//不锈钢矩形管
+import cal_jxg from '@/components/calculator/jxg'
+//不锈钢圆盘条
+import cal_ypt from '@/components/calculator/ypt'
+//不锈钢扁钢
+import cal_bg from '@/components/calculator/bg'
+//不锈钢槽钢
+import cal_cg from '@/components/calculator/cg'
+
+
 
 Vue.use(Router)
 
@@ -22,9 +36,33 @@ const router = new Router({
         name: '不锈钢计算器',
         component: Menu
     }, {
-        path: '/calculator/gc',
-        name: '钢材计算器',
-        component: cal_gc
+        path: '/calculator/bc',
+        name: '不锈钢板材',
+        component: cal_bc
+    }, {
+        path: '/calculator/gg',
+        name: '不锈钢管',
+        component: cal_gg
+    }, {
+        path: '/calculator/fg',
+        name: '不锈钢方管',
+        component: cal_fg
+    }, {
+        path: '/calculator/jxg',
+        name: '不锈钢矩形管',
+        component: cal_jxg
+    }, {
+        path: '/calculator/ypt',
+        name: '不锈钢圆盘条',
+        component: cal_ypt
+    }, {
+        path: '/calculator/bg',
+        name: '不锈钢扁钢',
+        component: cal_bg
+    }, {
+        path: '/calculator/cg',
+        name: '不锈钢槽钢',
+        component: cal_cg
     }, { //** 404页面 */
         path: '*',
         component: Error,

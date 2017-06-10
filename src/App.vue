@@ -263,4 +263,12 @@
     .menu-title {
         color: #888;
     }
+    
+    .result_cell {
+        background-color: #FFDC31;
+    }
+    
+    .card-padding {
+        padding: 10px 15px;
+    }
 </style>
