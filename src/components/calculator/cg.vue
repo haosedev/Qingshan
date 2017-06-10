@@ -14,8 +14,8 @@
             <x-input title="*腿长(b)" v-model="val_b" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
             <x-input title="*腰厚(d)" v-model="val_d" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
             <x-input title="*平均腿厚(t)" v-model="val_t" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*内弧半径(nr)" v-model="val_nr" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*端弧半径(dr)" v-model="val_dr" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*内弧半径(R)" v-model="val_rr" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*端弧半径(r)" v-model="val_r" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
          </group>
          <group v-show="showTab1">
             <x-input title="*长度(L)" v-model="val_ll" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>m</div></x-input>
@@ -85,8 +85,8 @@
                 val_b: '0',
                 val_d: '0',
                 val_t: '0',
-                val_nr: '0',
-                val_dr: '0',
+                val_rr: '0',
+                val_r: '0',
                 val_ll: '0',
                 val_ww: '0',
             }
@@ -106,7 +106,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //W=0.00000793*[h*d+2*t(b-d)+0.349(R*R-r*r)]*L
-                    var result = density * (Number(parseInt(this.val_h) * parseInt(this.val_d)) + Number(2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d))) + 0.349 * (parseInt(this.val_nr) * parseInt(this.val_nr) - parseInt(this.val_dr) * parseInt(this.val_dr))) * parseInt(this.val_ll);
+                    var result = density * (parseInt(this.val_h) * parseInt(this.val_d) + 2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d)) + 0.349 * (parseInt(this.val_rr) * parseInt(this.val_rr) - parseInt(this.val_r) * parseInt(this.val_r))) * parseInt(this.val_ll);
                     return result;
                 } else {
                     return 0;
@@ -118,7 +118,7 @@
                 var density = this.numList[key_num];
                 if (density > 0) {
                     //L=W/0.00000793*[h*d+2*t(b-d)+0.349(R*R-r*r)]
-                    var result = parseInt(this.val_ww) / (density * (Number(parseInt(this.val_h) * parseInt(this.val_d)) + Number(2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d))) + 0.349 * (parseInt(this.val_nr) * parseInt(this.val_nr) - parseInt(this.val_dr) * parseInt(this.val_dr))));
+                    var result = parseInt(this.val_ww) / (density * (parseInt(this.val_h) * parseInt(this.val_d) + 2 * parseInt(this.val_t) * (parseInt(this.val_b) - parseInt(this.val_d)) + 0.349 * (parseInt(this.val_rr) * parseInt(this.val_rr) - parseInt(this.val_r) * parseInt(this.val_r))));
                     return result;
                 } else {
                     return 0;
@@ -135,7 +135,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .card-padding {
-        padding: 10px 15px;
-    }
+
 </style>

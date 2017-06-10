@@ -10,8 +10,11 @@
             <popup-picker title="请选择材质" :data="itemData" v-model="item" value-text-align="right" ></popup-picker>
         </group>
          <group :title="itemStr">
-            <x-input title="*厚度(d)" v-model="val_d" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*宽度(w)" v-model="val_w" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*长边宽(bb)" v-model="val_bb" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*短边宽(b)" v-model="val_b" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*边宽(d)" v-model="val_d" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*内弧半径(rr)" v-model="val_rr" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*端弧半径(r)" v-model="val_r" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
          </group>
          <group v-show="showTab1">
             <x-input title="*长度(L)" v-model="val_ll" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>m</div></x-input>
@@ -22,8 +25,7 @@
             <card>
                 <div slot="content" class="card-padding">
                     <p>1.本工具计算的理论重量与实际重量有出入，误差约为0.2%-0.7%，计算结果仅估算参考，不建议在实际交易中使用。</p>
-                    <p>2.理计重量<br/>W=0.00000793*d*w*L</p>
-                    <p>3.不锈钢卷材、带材的计算公式与不锈钢板材的计算公式相同</p>
+                    <p>2.理计重量<br/>W=0.00000793*[d*(B+b-d)+0.215(R*R-2*r*r)]*L</p>
                 </div>
             </card>
         </div>
@@ -36,8 +38,7 @@
             <card>
                 <div slot="content" class="card-padding">
                     <p>1.本工具计算的理论重量与实际重量有出入，误差约为0.2%-0.7%，计算结果仅估算参考，不建议在实际交易中使用。</p>
-                    <p>2.理计长度<br/>L=W/0.00000793*d*w </p>
-                    <p>3.不锈钢卷材、带材的计算公式与不锈钢板材的计算公式相同</p>
+                    <p>2.理计长度<br/>L=W/0.000000793*[d*（B+b-d)+0.215（R*R-2*r*r)]</p>
                 </div>
             </card>
         </div>
@@ -70,7 +71,7 @@
         name: 'hello',
         data() {
             return {
-                title: '不锈钢板材',
+                title: '不等边角钢',
                 itemList: ['201', '202', '301', '302', '304', '304L', '305', '310', '321', '309S', '310S', '316', '316L', '347', '405', '410', '420', '409', '430', '434'],
                 itemData: [
                     ['201', '202', '301', '302', '304', '304L', '305', '310', '321', '309S', '310S', '316', '316L', '347', '405', '410', '420', '409', '430', '434']
@@ -79,8 +80,11 @@
                 numList: ['0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000793', '0.00000798', '0.00000798', '0.00000798', '0.00000798', '0.00000798', '0.00000775', '0.00000775', '0.00000775', '0.00000770', '0.00000770', '0.00000770'],
                 nowTab: 0,
                 showTab1: true,
+                val_bb: '0',
+                val_b: '0',
                 val_d: '0',
-                val_w: '0',
+                val_rr: '0',
+                val_r: '0',
                 val_ll: '0',
                 val_ww: '0',
             }
@@ -95,22 +99,24 @@
         },
         computed: {
             res1() {
-                //var totalWeight = density*wd*ww*wl;
+                //var totalWeight = density*(Number(wWidth*(Number(wLongWidth)+Number(wShortWidth)-wWidth))+Number(0.215*(wInRadius*wInRadius-2*wTopRadius*wTopRadius)))*wLength;
                 var key_num = this.itemList.indexOf(this.item[0]);
                 var density = this.numList[key_num];
                 if (density > 0) {
-                    var result = density * parseInt(this.val_d) * parseInt(this.val_w) * parseInt(this.val_ll);
+                    //W=0.00000793*[d*(B+b-d)+0.215(R*R-2*r*r)]*L
+                    var result = density * [parseInt(this.val_d) * (parseInt(this.val_bb) + parseInt(this.val_b) - parseInt(this.val_d)) + 0.215 * (parseInt(this.val_rr) * parseInt(this.val_rr) - 2 * parseInt(this.val_r) * parseInt(this.val_r))] * parseInt(this.val_ll);
                     return result;
                 } else {
                     return 0;
                 }
             },
             res2() {
-                //var totalWeight = lWeight/(density*lThickness*lWidth);
+                //var totalWidth = lWeight/(density*(Number(lWidth*(Number(lLongWidth)+Number(lShortWidth)-lWidth))+Number(0.215*(lInRadius*lInRadius-2*lTopRadius*lTopRadius))));
                 var key_num = this.itemList.indexOf(this.item[0]);
                 var density = this.numList[key_num];
                 if (density > 0) {
-                    var result = parseInt(this.val_ww) / (density * parseInt(this.val_d) * parseInt(this.val_w));
+                    //L=W/0.000000793*[d*（B+b-d)+0.215（R*R-2*r*r)]
+                    var result = parseInt(this.val_ww) / (density * (parseInt(this.val_d) * (parseInt(this.val_bb) + parseInt(this.val_b) - parseInt(this.val_d)) + 0.215 * (parseInt(this.val_rr) * parseInt(this.val_rr) - 2 * parseInt(this.val_r) * parseInt(this.val_r))));
                     return result;
                 } else {
                     return 0;

@@ -127,7 +127,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .card-padding {
-        padding: 10px 15px;
-    }
+
 </style>

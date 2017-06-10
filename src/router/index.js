@@ -12,14 +12,22 @@ import cal_gg from '@/components/calculator/gg'
 import cal_fg from '@/components/calculator/fg'
 //不锈钢矩形管
 import cal_jxg from '@/components/calculator/jxg'
-//不锈钢圆盘条
+//不锈钢圆钢盘条
 import cal_ypt from '@/components/calculator/ypt'
 //不锈钢扁钢
 import cal_bg from '@/components/calculator/bg'
 //不锈钢槽钢
 import cal_cg from '@/components/calculator/cg'
-
-
+//不锈钢方棒
+import cal_fb from '@/components/calculator/fb'
+//不锈钢六角钢
+import cal_ljg from '@/components/calculator/ljg'
+//不锈钢八角钢
+import cal_bjg from '@/components/calculator/bjg'
+//等边角钢
+import cal_dbjg from '@/components/calculator/dbjg'
+//不等边角钢
+import cal_bdbjg from '@/components/calculator/bdbjg'
 
 Vue.use(Router)
 
@@ -53,7 +61,7 @@ const router = new Router({
         component: cal_jxg
     }, {
         path: '/calculator/ypt',
-        name: '不锈钢圆盘条',
+        name: '不锈钢圆钢盘条',
         component: cal_ypt
     }, {
         path: '/calculator/bg',
@@ -63,6 +71,26 @@ const router = new Router({
         path: '/calculator/cg',
         name: '不锈钢槽钢',
         component: cal_cg
+    }, {
+        path: '/calculator/fb',
+        name: '不锈钢方棒',
+        component: cal_fb
+    }, {
+        path: '/calculator/ljg',
+        name: '不锈钢六角钢',
+        component: cal_ljg
+    }, {
+        path: '/calculator/bjg',
+        name: '不锈钢八角钢',
+        component: cal_bjg
+    }, {
+        path: '/calculator/dbjg',
+        name: '等边角钢',
+        component: cal_dbjg
+    }, {
+        path: '/calculator/bdbjg',
+        name: '不等边角钢',
+        component: cal_bdbjg
     }, { //** 404页面 */
         path: '*',
         component: Error,
