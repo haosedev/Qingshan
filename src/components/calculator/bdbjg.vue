@@ -10,15 +10,15 @@
             <popup-picker title="请选择材质" :data="itemData" v-model="item" value-text-align="right" ></popup-picker>
         </group>
          <group :title="itemStr">
-            <x-input title="*长边宽(bb)" v-model="val_bb" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*短边宽(b)" v-model="val_b" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*边宽(d)" v-model="val_d" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*内弧半径(rr)" v-model="val_rr" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
-            <x-input title="*端弧半径(r)" v-model="val_r" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*长边宽(bb)" v-model="val_bb"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*短边宽(b)" v-model="val_b"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*边宽(d)" v-model="val_d"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*内弧半径(rr)" v-model="val_rr"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>mm</div></x-input>
+            <x-input title="*端弧半径(r)" v-model="val_r"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>mm</div></x-input>
          </group>
          <group v-show="showTab1">
-            <x-input title="*长度(L)" v-model="val_ll" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>m</div></x-input>
-            <x-input class="result_cell" title="计算结果：" v-model="res1" disabled type="number" keyboard="number" :show-clear="false"><div slot="right" mini>吨（参考）</div></x-input>
+            <x-input title="*长度(L)" v-model="val_ll"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>m</div></x-input>
+            <x-input class="result_cell" title="计算结果：" v-model="res1" disabled  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>吨（参考）</div></x-input>
         </group>
         <div v-show="showTab1">
             <divider>使用须知</divider>
@@ -30,8 +30,8 @@
             </card>
         </div>
          <group v-show="!showTab1">
-            <x-input title="*重量(W)" v-model="val_ww" type="number" keyboard="number" :show-clear="false"><div slot="right" mini>吨</div></x-input>
-            <x-input class="result_cell" title="计算结果：" v-model="res2" disabled type="number" keyboard="number" :show-clear="false"><div slot="right" mini>m（参考）</div></x-input>
+            <x-input title="*重量(W)" v-model="val_ww"  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>吨</div></x-input>
+            <x-input class="result_cell" title="计算结果：" v-model="res2" disabled  type="number" pattern="[0-9][.]*" :show-clear="false"><div slot="right" mini>m（参考）</div></x-input>
         </group>
         <div v-show="!showTab1">
             <divider>使用须知</divider>

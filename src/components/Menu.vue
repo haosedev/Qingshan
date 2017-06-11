@@ -14,23 +14,34 @@
             <cell title="等边角钢" link="/calculator/dbjg"></cell>
             <cell title="不等边角钢" link="/calculator/bdbjg"></cell>
         </group>
+        <div>
+            <card>
+                <div slot="content" class="card-padding center version">
+                    <p>青山钢网</p>
+                    <p>Version:{{version}}</p>
+                </div>
+            </card>
+        </div>
     </div>
 </template>
 
 <script>
     import {
         Group,
-        Cell
+        Cell,
+        Card
     } from 'vux'
     export default {
         components: {
             Group,
-            Cell
+            Cell,
+            Card
         },
         name: 'hello',
         data() {
             return {
-                msg: 'Welcome'
+                msg: 'Welcome',
+                version: '0.6.11',
             }
         }
     }
@@ -38,5 +49,11 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    .center {
+        text-align: center;
+    }
+    
+    .version {
+        color: #ccc;
+    }
 </style>
