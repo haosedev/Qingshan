@@ -12,8 +12,10 @@ import cal_gg from '@/components/calculator/gg'
 import cal_fg from '@/components/calculator/fg'
 //不锈钢矩形管
 import cal_jxg from '@/components/calculator/jxg'
-//不锈钢圆钢盘条
+//不锈钢圆钢盘条--不锈钢圆钢
 import cal_ypt from '@/components/calculator/ypt'
+//不锈钢线材
+import cal_xc from '@/components/calculator/xc'
 //不锈钢扁钢
 import cal_bg from '@/components/calculator/bg'
 //不锈钢槽钢
@@ -60,8 +62,12 @@ const router = new Router({
         component: cal_jxg
     }, {
         path: '/calculator/ypt',
-        name: '不锈钢圆钢盘条',
+        name: '不锈钢圆钢',
         component: cal_ypt
+    }, {
+        path: '/calculator/xc',
+        name: '不锈钢线材',
+        component: cal_xc
     }, {
         path: '/calculator/bg',
         name: '不锈钢扁钢',
