@@ -1,6 +1,6 @@
 <template>
     <div>
-        <group title="不锈钢计算器">
+        <group title="请选择您需要的材料计算器：">
             <cell title="等边角钢" link="/calculator/dbjg"></cell>
             <cell title="不锈钢管" link="/calculator/gg"></cell>
             <cell title="不锈钢方管" link="/calculator/fg"></cell>

@@ -124,7 +124,7 @@ export default {
             }
         },
         title() {
-            if (this.route.path === '/') return '钢材计算器'
+            if (this.route.path === '/') return '不锈钢计算器'
             //return this.routerName ? `计算器-${this.routerName}` : '计算器'
             return this.routerName ? `${this.routerName}` : '计算器'
         },
