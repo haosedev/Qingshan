@@ -44,7 +44,7 @@ export default {
     data() {
         return {
             msg: 'Welcome',
-            version: '0.6.22',
+            version: '0.7.23',
         }
     }
 }
